@@ -1,0 +1,12 @@
+import scala.io.Source 
+object WordFrequency extends App { 
+val filename = "sample.txt" 
+val text = Source.fromFile(filename).getLines().mkString(" ") 
+val tokens = text.toLowerCase.replaceAll("[^a-z\\s]", "").split("\\s+") v
+al frequency = tokens.groupBy(identity).mapValues(_.length) 
+frequency.toSeq.sortBy(-_._2).foreach { 
+case (word, count) => println(s"$word: $count") 
+} 
+}
+
+> 🔎 Note: Create a file named sample.txt with some text content. 
