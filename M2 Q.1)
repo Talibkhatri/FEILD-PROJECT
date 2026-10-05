@@ -1,0 +1,19 @@
+import scala.annotation.tailrec 
+def pearsonCorrelation(x: List[Double], y: List[Double]): 
+Double = { require(x.length == y.length, "Lists must have same length") 
+val n = x.length 
+val sumX = x.sum 
+val sumY = y.sum 
+val sumXY = x.zip(y).map { case (a, b) => a * b }.sum 
+val sumX2 = x.map(a => a * a).sum 
+val sumY2 = y.map(b => b * b).sum 
+val numerator = n * sumXY - sumX * sumY 
+val denominator = Math.sqrt((n * sumX2 - sumX * sumX) * (n * sumY2 - sumY * sumY)
+) 
+numerator / denominator 
+} 
+// Main object to run the test 
+@main def runTest(): Unit = 
+{ val list1 = List(1.0, 2.0, 3.0, 4.0, 5.0) 
+val list2 = List(2.0, 4.0, 5.0, 4.0, 5.0) 
+println(s"Pearson correlation: ${pearsonCorrelation(list1, list2)}") }
