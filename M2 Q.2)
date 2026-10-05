@@ -1,0 +1,9 @@
+def movingAverage(data: List[Double], windowSize: Int): 
+List[Double] = { require(windowSize > 0 && windowSize <= data.length, "Invalid window size") 
+data.sliding(windowSize).map(window => window.sum / windowSize).toList 
+} 
+// Test 
+@main def runMovingAverage(): Unit = { 
+val timeSeries = List(10.0, 12.0, 15.0, 13.0, 14.0, 16.0, 18.0) 
+val ma3 = movingAverage(timeSeries, 3) 
+println(s"3-period moving average: $ma3") } 
