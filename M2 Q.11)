@@ -1,0 +1,39 @@
+//> using jvm "11" 
+//> using scala "2.12.18"  
+//> using dep org.apache.spark::spark-sql:3.4.1 
+import org.apache.spark.sql.SparkSession 
+import org.apache.spark.sql.functions._ 
+object SparkGroupByExample { 
+def main(args: Array[String]): Unit = { 
+// Initialize Spark Session 
+val spark = SparkSession.builder() 
+.appName("SparkGroupByExample") 
+.master("local[*]") 
+.getOrCreate() 
+import spark.implicits._ try { 
+// Create sample data 
+val sampleData = Seq( 
+("2023-10-01", "P123", 1200.0), 
+("2023-10-02", "P456", 800.0), 
+("2023-10-03", "P123", 1500.0), 
+("2023-10-04", "P789", 500.0), 
+("2023-10-05", "P456", 2000.0), 
+("2023-10-06", "P123", 1000.0), 
+("2023-10-07", "P789", 700.0) 
+) 
+val df = sampleData.toDF("date", "productId", "amount") 
+// Perform groupBy and aggregation 
+val avgSalesByProductDF = df.groupBy($"productId") 
+.agg(avg($"amount")
+.as("average_sale")) 
+.orderBy($"average_sale".desc) 
+// Show results 
+println("Average Sales by Product (Descending Order):") 
+avgSalesByProductDF
+.show() 
+} 
+finally { 
+spark.stop() 
+} 
+} 
+}
