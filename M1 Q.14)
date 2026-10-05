@@ -1,0 +1,13 @@
+import breeze.plot._ 
+import scala.util.Random 
+object ScatterPlotExample extends App { 
+val f = Figure() 
+val p = f.subplot(0) 
+val x = DenseVector((1 to 100).map(_ => Random.nextDouble() * 10).toArray) 
+val y = DenseVector((1 to 100).map(_ => Random.nextDouble() * 10).toArray) 
+p += plot(x, y, '+', colorcode = "b") 
+p.xlabel = "Random X values" 
+p.ylabel = "Random Y values" 
+f.saveas("scatter_plot.png")  // saves the plot 
+} 
+> 🔎 Note: This will also show a pop-up window (if supported) and save the image as scatter_plot.png. 
