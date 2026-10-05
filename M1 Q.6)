@@ -1,0 +1,9 @@
+import breeze.linalg._ 
+import scala.util.Random 
+object BreezeMatrixOps extends App { 
+val matrix = DenseMatrix.rand[Double](3, 3) 
+println(s"Original Matrix:\n$matrix") 
+val transposed = matrix.t 
+println(s"Transposed Matrix:\n$transposed") 
+val determinant = det(matrix) 
+println(s"Determinant: $determinant") } 
