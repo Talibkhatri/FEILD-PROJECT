@@ -1,0 +1,6 @@
+1. Install Scala: 
+Download from https://www.scala-lang.org/download/
+Verify: scala -version 
+2. Install SBT: Download from https://www.scala-sbt.org/ 
+Verify: sbt sbtVersion 
+3. Create SBT Project: sbt new scala/hello-world.g8 cd hello-world sbt run 
