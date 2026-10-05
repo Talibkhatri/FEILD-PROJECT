@@ -1,0 +1,13 @@
+import com.github.tototoshi.csv._ 
+import java.io.File 
+object CSVStatistics extends App { 
+val reader = CSVReader.open(new File("data.csv")) 
+val rows = reader.allWithHeaders() 
+reader.close() 
+val numericColumns = rows.head.keys.toList.filter(col => rows.forall(row => row(col).forall(_.isDigit))) 
+numericColumns.foreach { 
+col => val values = rows.map(_(col).toDouble) 
+println(s"Column: $col") 
+println(s"Min: ${values.min}, Max: ${values.max}, Mean: ${values.sum / values.size}") 
+} 
+} 
