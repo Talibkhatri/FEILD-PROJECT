@@ -1,0 +1,9 @@
+import scala.util.Random 
+object VarianceStdDev extends App { 
+val data = Seq.fill(10)(Random.nextInt(100)) 
+val mean = data.sum.toDouble / data.size 
+val variance = data.map(x => math.pow(x - mean, 2)).sum / data.size 
+val stddev = math.sqrt(variance) 
+println(s"Data: $data") 
+println(s"Variance: $variance") 
+println(s"Standard Deviation: $stddev") } 
