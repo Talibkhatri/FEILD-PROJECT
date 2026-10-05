@@ -1,0 +1,14 @@
+import breeze.linalg._ 
+import breeze.plot._ 
+object CombinedPlot extends App { 
+val f = Figure() 
+val p = f.subplot(0) 
+val x = DenseVector.rangeD(0, 10, 1) 
+val yLine = x.map(x => x * x)  // Line plot y = x^2 
+val yScatter = DenseVector((1 to 10).map(_ => scala.util.Random.nextDouble() * 100).toArray) 
+p += plot(x, yLine, name = "y = x^2", colorode = "r") 
+p += plot(x, yScatter, '+', name = "Random Data", colorcode = "b") 
+p.xlabel = "X-axis" 
+p.ylabel = "Y-axis" 
+p.legend = true 
+f.saveas("combined_plot.png") } 
