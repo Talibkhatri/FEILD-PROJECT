@@ -1,0 +1,10 @@
+object StatisticsExample extends App { 
+val data = List(2, 4, 4, 6, 8, 10, 4) 
+val mean = data.sum.toDouble / data.size 
+val sortedData = data.sorted 
+val median = if (data.size % 2 == 0) 
+(sortedData(data.size / 2 - 1) + sortedData(data.size / 2)) / 2.0 else sortedData(data.size / 2) 
+val mode = data.groupBy(identity).mapValues(_.size).maxBy(_._2)._1 println(s"Data: $data") 
+println(s"Mean: $mean") 
+println(s"Median: $median") 
+println(s"Mode: $mode") } 
