@@ -11,3 +11,4 @@ println(s"Column: $col")
 println(s"Min: ${values.min}, Max: ${values.max}, Mean: ${values.sum / values.size}") 
 } 
 } 
+> 🔎 Note: You must have data.csv file in the same folder (with numeric columns). 
