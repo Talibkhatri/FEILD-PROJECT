@@ -1,0 +1,17 @@
+//> using jvm "11" 
+//> using scala "3.3.1"  
+case class DataPoint(id: Int, value: Double, category: String)  
+@main def runSortAndExtract(): Unit = {   
+val dataset = List(     
+DataPoint(1, 45.0, "A"),     
+DataPoint(2, 23.0, "B"),     
+DataPoint(3, 89.0, "A"),     
+DataPoint(4, 12.0, "C"),     
+DataPoint(5, 67.0, "B"),     
+DataPoint(6, 34.0, "A"),     
+DataPoint(7, 78.0, "C")   
+)    
+val sortedTop5 = dataset.sortBy(_.value)(using Ordering[Double].reverse).take(5)   
+println("Top 5 by value:")   
+sortedTop5.foreach(println) 
+} 
