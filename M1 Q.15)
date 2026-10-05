@@ -1,0 +1,10 @@
+import breeze.linalg._ 
+import breeze.plot._ 
+import scala.util.Random 
+object HistogramExample extends App { 
+val data = DenseVector((1 to 1000).map(_ => Random.nextGaussian()).toArray) 
+val f = Figure() 
+val p = f.subplot(0) p += hist(data, 20)  // 20 bins 
+p.xlabel = "Value" 
+p.ylabel = "Frequency" 
+f.saveas("histogram.png") } 
